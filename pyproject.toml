@@ -6,6 +6,9 @@ authors = ["Britodfbr <britodfbr@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+Faker = "^8.12.1"
+Pillow = "^8.3.2"
+qrcode = "^7.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
