@@ -137,6 +137,7 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
+pillow = {version = "*", optional = true, markers = "extra == \"pil\""}
 
 [package.extras]
 all = ["zest.releaser", "tox", "pytest", "pytest", "pytest-cov", "pillow"]
@@ -172,7 +173,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "75c23e854042dfdfe26ec86015bdc94fa6478890b749552260a554a3fa610050"
+content-hash = "76df66c820891c4079b2fa57397ec19d134f0cdc9552f7b17e6c184fccc068fb"
 
 [metadata.files]
 atomicwrites = [
