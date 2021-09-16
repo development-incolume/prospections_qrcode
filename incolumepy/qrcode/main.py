@@ -5,12 +5,19 @@ import qrcode
 from datagen import funcionariosgen, linksgen
 from pathlib import Path
 from PIL import Image
+from inspect import stack
+from random import choices
+import datetime as dt
+
 
 __author__ = "@britodfbr"
 funcionariosgen()
 linksgen()
 output = Path('qrcodes')
 output.mkdir(exist_ok=True)
+with open('links.json') as f:
+    links = json.load(f)
+logos = list(Path(__file__).parent.joinpath('..',  'img').resolve().glob('*.png'))
 
 
 def modo1():
@@ -19,8 +26,6 @@ def modo1():
 
 
 def modo2():
-    with open('links.json') as f:
-        links = json.load(f)
     # print(links)
     for name, link in links.items():
         print(name, link)
@@ -72,6 +77,22 @@ def modo3():
     QRimg.save(output / 'QR.png')
 
     print('QR code generated!')
+
+
+def modo4():
+    import pyqrcode
+    from PIL import Image
+    url = pyqrcode.QRCode('http://www.eqxiu.com', error='H')
+    url.png('test.png', scale=10)
+    im = Image.open('test.png')
+    im = im.convert("RGBA")
+    logo = Image.open('logo.png')
+    box = (135, 135, 235, 235)
+    im.crop(box)
+    region = logo
+    region = region.resize((box[2] - box[0], box[3] - box[1]))
+    im.paste(region, box)
+    im.show()
 
 
 if __name__ == '__main__':
