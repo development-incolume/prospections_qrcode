@@ -95,7 +95,34 @@ def modo4():
     im.show()
 
 
+def modo5():
+    print(logos)
+    for name, link in links.items():
+        # Path to the Logo in PNG format
+        imgfile ,= choices(logos, k=1)
+        Logo = Image.open(imgfile)
+        # The parameters to set for the image/ QR Code image size, border etc.
+        qr = qrcode.QRCode(
+            version=12,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            box_size=10,
+            border=1
+        )
+        # To add the link to the QR Code
+        qr.add_data(link)
+        qr.make()
+        # You need to convert the image into RGB in order to use it
+        img_qr_big = qr.make_image().convert('RGB')
+
+        # Where to place the logo within the QR Code
+        pos = ((img_qr_big.size[0] - Logo.size[0]) // 2, (img_qr_big.size[1] - Logo.size[1]) // 2)
+        img_qr_big.paste(Logo, pos)
+        # Path where you want to save the Generate QR Code along with the name in a series or the number series
+        img_qr_big.save(output / f'{stack()[0][3]}-{dt.datetime.now().strftime("%s")}-{name}.png')
+
+
 if __name__ == '__main__':
     # modo1()
     # modo2()
-    modo3()
+    # modo3()
+    modo5()
