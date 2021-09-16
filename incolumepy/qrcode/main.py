@@ -37,7 +37,7 @@ def modo3():
     logo = Image.open(Logo_link)
 
     # taking base width
-    basewidth = 100
+    basewidth = 150
 
     # adjust image size
     wpercent = (basewidth / float(logo.size[0]))
