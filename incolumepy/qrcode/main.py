@@ -98,6 +98,7 @@ def modo4():
 def modo5():
     print(logos)
     for name, link in links.items():
+        print(name, end=' ')
         # Path to the Logo in PNG format
         imgfile ,= choices(logos, k=1)
         Logo = Image.open(imgfile)
@@ -119,6 +120,7 @@ def modo5():
         img_qr_big.paste(Logo, pos)
         # Path where you want to save the Generate QR Code along with the name in a series or the number series
         img_qr_big.save(output / f'{stack()[0][3]}-{dt.datetime.now().strftime("%s")}-{name}.png')
+        print('ok')
 
 
 if __name__ == '__main__':

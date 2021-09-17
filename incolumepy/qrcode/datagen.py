@@ -11,6 +11,7 @@ Faker.seed(13)
 fake = Faker('pt_BR')
 # print(fake.ean(length=13, prefixes=('0'*4,)))
 funcionarios = []
+quantia = 100
 
 
 def login_form(name: str):
@@ -22,7 +23,7 @@ def login_form(name: str):
 
 
 def funcionariosgen():
-    for i in range(1000):
+    for i in range(quantia):
         func = {}
         func['id'] = fake.ean(prefixes=('0'*6,))
         func['nome'] = f'{fake.first_name()} {fake.last_name()} {fake.last_name()}'
@@ -48,7 +49,7 @@ def funcionariosgen():
 
 
 def linksgen():
-    result = {f'link{x:04}': fake.url() for x in range(1, 1001)}
+    result = {f'link{x:04}': fake.url() for x in range(quantia)}
     file = Path(__file__).parent/'links.json'
     try:
         with open(file, 'x') as f:
